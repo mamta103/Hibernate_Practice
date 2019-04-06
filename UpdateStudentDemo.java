@@ -34,6 +34,16 @@ public class UpdateStudentDemo {
 			theStudent.setFirstName("Mamta");
 			
 			session.getTransaction().commit();
+			
+			//New Code
+			session= sessionFactory.getCurrentSession();
+			 
+			
+			session.beginTransaction();
+			// update email for all students
+			System.out.println("Update email for all students");
+			session.createQuery("update Student set email='foo@gmail.com'").executeUpdate();
+			session.getTransaction().commit();
 			System.out.println("Done!");
 
 		} finally {
